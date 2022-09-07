@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="" ir=edge>
+    <title>Forms</title>
+
+</head>
+
+<body>
+    <div style="margin:100px">
+        <h2>Fetch API-Sending forn <datagrid></datagrid>
+        </h2>
+        <form id="form" method="post">
+            <label>
+                <div> Id: <input type="number" id="id" placeholder="1"> </div>
+            </label>
+            <label>
+                <div> Name: <input type="text" id="name" placeholder="John Doe"> </div>
+            </label>
+            <label>
+                <div> Username: <input type="text" id="username" placeholder="john"> </div>
+            </label>
+            <label>
+                <div>Email: <input type="email" id="email" placeholder="john@gmail.com"></div>
+            </label>
+            <label>
+                <div>
+                    Address:
+                    <div>
+                        <div>Street <input type="text" id="street" name="street"></div>
+                        <div>Suite <input type="text" id="suite" name="suite"></div>
+                        <div>City <input type="text" id="city" name="city"> </div>
+                        <div>Zipcode <input type="number" id="zipcode" name="zipcode"> </div>
+                        <div>
+                            Gio:
+                            <diV>Latitude <input type="number" id="latitude" name="lat"></div>
+                            <div> Longitude <input type="number" id="longitude" name="lng"></div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+            <label>
+                <div>
+                    Phone: <input type="number" id="phone" name="phone">
+                </div>
+            </label>
+            <label>
+                <div>
+                    website: <input type="url" id="website" name="website">
+                </div>
+            </label>
+            <label>
+                <div>
+                    Company: {
+                    <div>
+                        Name: <input type="text" id="companyName" name="name">
+                    </div>
+                    <div>
+                        Chatchphrase: <input type="text" id="catchPhrase" name="chatchphrase">
+                    </div>
+                    <div>
+                        Bs: <input type="text" id="bs" name="bs">
+                    </div>
+                    }
+                </div>
+            </label>
+            <div>
+                <input type="reset" value="Reset">
+            </div>
+            <input type="submit" name="submit" value="Submit" />
+        </form>
+    </div>
+</body>
+<script>
+    var form = document.getElementById('form')
+    form.addEventListener('submit', function (e) {
+        e.preventDefault()
+        var id = document.getElementById('id').value
+        var name = document.getElementById('name').value
+        var username = document.getElementById('username').value
+        var email = document.getElementById('email').value
+        var street = document.getElementById('street').value
+        var suite = document.getElementById('suite').value
+        var city = document.getElementById('city').value
+        var zipcode = document.getElementById('zipcode').value
+        var latitude = document.getElementById('latitude').value
+        var longitude = document.getElementById('longitude').value
+        var phone = document.getElementById('phone').value
+        var website = document.getElementById('website').value
+        var companyName = document.getElementById('companyName').value
+        var catchPhrase = document.getElementById('catchPhrase').value
+        var bs = document.getElementById('bs').value
+
+
+        fetch('https://jsonplaceholder.typicode.com/users', {
+            method: 'POST',
+            body: JSON.stringify({
+                id: id,
+                name: name,
+                username: username,
+                email: email,
+                street: street,
+                suite: suite,
+                city: city,
+                zipcode: zipcode,
+                latitude: latitude,
+                longitude: longitude,
+                phone: phone,
+                website: website,
+                companyName: email,
+                catchPhrase: catchPhrase,
+                bs: bs,
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+
+
+    })
+
+
+</script>
+
+</html>
